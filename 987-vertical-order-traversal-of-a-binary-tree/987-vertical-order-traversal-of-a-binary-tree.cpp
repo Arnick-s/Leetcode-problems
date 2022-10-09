@@ -41,10 +41,8 @@ public:
         for(auto it:mp){
             vector<int> col;
             for(auto ii:it.second){
-                // col.insert(col.end(),ii.second.begin(),ii.second.end());
-                for(auto ij:ii.second){
-                    col.push_back(ij);
-                }
+                col.insert(col.end(),ii.second.begin(),ii.second.end());
+                
             }
             ans.push_back(col);
         }
