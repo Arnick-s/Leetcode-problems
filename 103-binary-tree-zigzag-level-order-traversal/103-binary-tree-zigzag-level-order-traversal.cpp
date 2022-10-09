@@ -19,24 +19,19 @@ public:
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
-            vector<int> level;
             int size = q.size();
-            while(size--){
+            vector<int> level(size);
+            for(int i = 0;i<size;i++){
                 root = q.front();
                 q.pop();
-                level.push_back(root->val);
+                
+                int idx = flag ? i : size - 1 - i;
+                level[idx] = root->val;
                 if(root->left)q.push(root->left);
                 if(root->right)q.push(root->right);
             }
-            if(flag)
-            {
-                flag = false;
-            }
-            else{
-                reverse(level.begin(),level.end());
-                flag = true;
-            }
-                ans.push_back(level);
+            flag = !flag;
+            ans.push_back(level);
         }
         return ans;
     }
