@@ -5,10 +5,10 @@ public:
         int n = grid.size();
         int m = grid[0].size();
         int res = 0;
+        int ans = m;
         for(auto &nums: grid){
             int l = 0;
             int r = nums.size() - 1;
-            int ans = m;
             while(l<=r){
                 int mid = l + (r-l)/2;
                 
