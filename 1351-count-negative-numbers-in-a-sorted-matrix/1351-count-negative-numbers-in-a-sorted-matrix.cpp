@@ -9,6 +9,7 @@ public:
         for(auto &nums: grid){
             int l = 0;
             int r = nums.size() - 1;
+            if(ans < r)r=ans;
             while(l<=r){
                 int mid = l + (r-l)/2;
                 
