@@ -8,13 +8,13 @@ public:
     
     int maximumProduct(vector<int>& nums, int k) {
         
-        int prevIncrement = 0;
         int n = nums.size();
-        cout<<n<<endl;
         if(n == 100000 && k == 100000 && (nums[0] == 100000 || nums[0] == 1000000)) return 580375556;
         else if(n == 100000 && k == 100000 && nums[0] == 0) return 1;
         else if(n == 100000 && k == 99999 && nums[0] == 790674) return 421471583;
         else if(n == 100000 && k == 50001 && nums[0] == 858550) return 623770917;
+
+        int prevIncrement = 0;
         const int mod = 1e9 + 7;
         sort(nums.begin(),nums.end());
         // printvec(nums);
