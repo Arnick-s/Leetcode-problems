@@ -21,8 +21,6 @@ public:
     
     int minSubArrayLen(int target, vector<int>& nums) {
         int n = nums.size();
-        // if(n == 100000 && target == 396893380) return 79517;
-        // if(n == 100000 && target == 1000000000) return 100000;
         
         int l = 0;
         long long lVal = 0;
