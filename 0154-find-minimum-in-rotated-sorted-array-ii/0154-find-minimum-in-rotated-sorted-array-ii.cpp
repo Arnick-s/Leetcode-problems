@@ -10,11 +10,8 @@ public:
         int l = 0;
         int r = n-1;
         
-        
         while(r-l>1){
             int mid = l + (r-l)/2;
-            // return 0;
-            // cout<<l<<' '<<r<<endl;
             if(nums[mid] == nums[r]){
                 if(nums[mid] == nums[l]){
                     while(nums[mid]==nums[l] && l<r)l++;
@@ -26,8 +23,6 @@ public:
             }else if(nums[mid]>nums[r])l = mid;
             else r = mid;
         }
-        
-        // cout<<r<<endl;
         if(nums[l]<nums[r])return nums[l];
         return nums[r];
     }
