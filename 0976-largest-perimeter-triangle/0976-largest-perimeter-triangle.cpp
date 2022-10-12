@@ -6,13 +6,9 @@ public:
         
         //consider the last three;
         for(int i = n-1;i>=2;i--){
-            int lar1 = nums[i];
-            int lar2 = nums[i-1];
-            int lar3 = nums[i-2];
             
-            int sum23 = lar2 + lar3;
-            if(lar1 >= sum23)continue;
-            else return lar1 + sum23;
+            if(nums[i] >= nums[i-1]+nums[i-2])continue;
+            else return nums[i]+nums[i-1] + nums[i-2];
         }
         return 0;
     }
