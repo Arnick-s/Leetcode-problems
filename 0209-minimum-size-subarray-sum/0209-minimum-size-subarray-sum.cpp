@@ -3,26 +3,31 @@ public:
     
     long long maxSum(vector<int>&nums,int dig){
         int n = nums.size();
-        int maxSum = INT_MIN;
-        for(int i = 0;i<n-dig+1;i++){
-            int tempSum = 0;
-            for(int j = 0;j<dig;j++){
-                tempSum+=nums[j+i];
-            }
-            maxSum = max(tempSum,maxSum);
+        
+        long long sum = 0;
+        for(int i = 0;i<dig;i++){
+            sum += nums[i];
+        }
+        int prev = 0;
+        int next = dig;
+        
+        long long maxSum = sum;
+        while(next<n){
+            sum += (nums[next++] - nums[prev++]);
+            maxSum = max(maxSum,sum);
         }
         return maxSum;
     }
     
     int minSubArrayLen(int target, vector<int>& nums) {
         int n = nums.size();
-        if(n == 100000 && target == 396893380) return 79517;
-        if(n == 100000 && target == 1000000000) return 100000;
+        // if(n == 100000 && target == 396893380) return 79517;
+        // if(n == 100000 && target == 1000000000) return 100000;
         
         int l = 0;
-        int lVal = 0;
+        long long lVal = 0;
         int r = n;
-        int rVal = maxSum(nums,r);
+        long long rVal = maxSum(nums,r);
         
         if(target > rVal) return 0;
         
