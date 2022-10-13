@@ -9,38 +9,17 @@
  */
 class Solution {
 public:
-    
-    bool rootNodePath(TreeNode* root,TreeNode* node,vector<TreeNode*>&nums){
-        if(root == NULL) return false;
-        
-        nums.push_back(root);
-        if(node == root) return true;
-        if(rootNodePath(root->left,node,nums) || rootNodePath(root->right,node,nums))
-            return true;
-        
-        nums.pop_back();
-        return false;
-    }
-    void printvec(vector<TreeNode*>&nums){
-        for(auto &it:nums)cout<<it->val<<" ";
-        cout<<endl;
-    }
-    
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<TreeNode*> vecp,vecq;
-        rootNodePath(root,p,vecp);
-        rootNodePath(root,q,vecq);
+        if(!root || root == p || root == q)
+            return root;
         
-        int n = min(vecq.size(),vecp.size());
+        TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        TreeNode* right = lowestCommonAncestor(root->right,p,q);
         
-        TreeNode* ans;
-        for(int i = 0;i<n;i++){
-            if(vecq[i]==vecp[i]){
-                ans = vecq[i];
-            }else{
-                break;
-            }
-        }
-        return ans;
+        if(!right){
+            return left;
+        }else if(!left)
+            return right;
+        return root;
     }
 };
