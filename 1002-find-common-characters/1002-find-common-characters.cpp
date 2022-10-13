@@ -9,9 +9,9 @@ public:
             common_hash[words[0][i] - 'a'].second ++;
         }
         
+        vector<int> hash(27,0);
         for(int word = 1;word<n;word++){
             int m = words[word].length();
-            vector<int> hash(27,0);
                 for(int i = 0;i<m;i++){
                     hash[words[word][i] - 'a']++;
                 }
@@ -21,6 +21,7 @@ public:
                 else if(hash[i]>0){
                     common_hash[i].second = min(common_hash[i].second,hash[i]);
                 }
+                hash[i] = 0;//del
             }
         }
         vector<string> ans;
