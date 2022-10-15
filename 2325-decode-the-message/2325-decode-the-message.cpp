@@ -7,13 +7,11 @@ public:
         
         int x = 0;
         for(int i = 0;i<n;i++){
-            if(s[i] != ' '){
-                if(seen[s[i]-'a'] == false)
-                {
-                    KEY[s[i]-'a'] = x + 'a';
-                    x++;
-                    seen[s[i]-'a'] = true;
-                }
+            if(s[i] == ' ')continue;
+            if(seen[s[i]-'a'] == false)
+            {
+                KEY[s[i]-'a'] = x++ + 'a';
+                seen[s[i]-'a'] = true;
             }
         }
         
