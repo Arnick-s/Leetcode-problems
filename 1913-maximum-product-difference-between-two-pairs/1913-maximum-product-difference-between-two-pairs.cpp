@@ -12,15 +12,12 @@ public:
                 fh = num;
             }else if(num>sh)
                 sh = num;
-            
             if(num<fl){
                 sl = fl;
                 fl = num;
             }else if(num<sl)
                 sl = num;
         }
-        long long temp = fh;
-        temp *= sh;
-        return temp - fl*sl;
+        return fh*sh - fl*sl;
     }
 };
