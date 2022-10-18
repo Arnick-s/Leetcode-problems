@@ -28,7 +28,7 @@ public:
             multiplier++;
         }
         
-        int dig = count_dig(lesser_dig_count);
+        int dig = multiplier;
         n = n-1;
         int rem = n%dig;
         n/=dig;
