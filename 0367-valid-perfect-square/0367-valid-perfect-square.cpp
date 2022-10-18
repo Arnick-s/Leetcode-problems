@@ -7,8 +7,9 @@ public:
         
         while(l<=r){
             m = l + (r-l)/2;
-            if(m*m == N) return true;
-            else if(m*m < N) l = m + 1;
+            long long m_sq = m*m;
+            if(m_sq == N) return true;
+            else if(m_sq < N) l = m + 1;
             else r = m - 1;
         }
         return false;
