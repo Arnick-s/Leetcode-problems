@@ -8,7 +8,7 @@ public:
         }
         vector<string> res(k);
         for(int i = 0;i<k;i++){
-            string maxS;
+            string maxS = hash.begin()->first;
             auto maxFreqIt = hash.begin();
             for(auto it = hash.begin();it != hash.end();it++){
                 if(it->second > maxFreqIt->second){
@@ -21,7 +21,7 @@ public:
             }
             cout<<maxFreqIt->first<<endl;
             maxFreqIt->second = 0;
-            res[i] = maxFreqIt->first;
+            res[i] = maxS;
         }
         return res;
     }
