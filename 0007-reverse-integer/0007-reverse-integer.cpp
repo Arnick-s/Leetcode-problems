@@ -6,8 +6,8 @@ public:
         if(x<0){
             multiplier = -1;
             if(x == INT_MIN)return 0;
+            x *= multiplier;
         }
-        x *= multiplier;
         
         int res = 0;
         while(x){
