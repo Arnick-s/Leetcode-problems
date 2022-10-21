@@ -1,29 +1,19 @@
 class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
-        unordered_set<int> visited;
-        int n = nums.size();
-        
-        //inserting starting k+1 ele
-        for(int i = 0; i<k+1 && i<n ;i++){
-            if(visited.find(nums[i]) == visited.end())
-                visited.insert(nums[i]);
-            else
-                return true;
-        }
-
-        //sliding window
-        int l = 0;
-        int r = k + 1;
-        while( r < n ){
-            visited.erase(visited.find(nums[l]));
-            l++;
-            if(visited.find(nums[r]) == visited.end())
-                visited.insert(nums[r]);
-            else
-                 return true;
-            r++;
-        }
-        return false;
+    
+    unordered_map<int,int> nmap;
+    for (int i = 0; i <nums.size();i++)
+    {
+        if (nmap.count(nums[i]) == 0)
+            nmap[nums[i]] = i;
+        else if (i - nmap[nums[i]] <=k)
+            return true;
+        else
+            nmap[nums[i]] = i;
     }
+    
+    return false;
+    
+}
 };
