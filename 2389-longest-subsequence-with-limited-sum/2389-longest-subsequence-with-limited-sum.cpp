@@ -11,9 +11,8 @@ public:
         //smaller than or equal to
         vector<int> res(m);int idx = 0;
         for(auto &t:queries){
-            auto it = --upper_bound(nums.begin(),nums.end(),t) - nums.begin();
             
-            res[idx++] = it+1;
+            res[idx++] = --upper_bound(nums.begin(),nums.end(),t) - nums.begin() + 1;
         }
         return res;
     }
