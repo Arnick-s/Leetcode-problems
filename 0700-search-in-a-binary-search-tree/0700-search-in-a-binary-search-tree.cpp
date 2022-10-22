@@ -12,14 +12,9 @@
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-        if(!root) return nullptr;
-        
-        if(root->val == val) return root;
-        TreeNode* left = searchBST(root->left,val);
-        TreeNode* right = searchBST(root->right,val);
-        if(!left) return right;
-        else if(!right) return left;
-        else cout<<"ERROR!";
-        return nullptr;
+        while(root && root->val != val){
+            root = (root->val > val) ? root->left:root->right;
+        }
+        return root;
     }
 };
