@@ -12,7 +12,7 @@ public:
         vector<int> res(m);int idx = 0;
         for(auto &t:queries){
             
-            res[idx++] = --upper_bound(nums.begin(),nums.end(),t) - nums.begin() + 1;
+            res[idx++] = upper_bound(nums.begin(),nums.end(),t) - nums.begin();
         }
         return res;
     }
