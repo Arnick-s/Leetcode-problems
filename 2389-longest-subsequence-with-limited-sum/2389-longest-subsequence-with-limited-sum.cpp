@@ -11,15 +11,10 @@ public:
         //smaller than or equal to
         vector<int> res(m);int idx = 0;
         for(auto &t:queries){
-            int l = -1;
-            int r = n;
-            
-            while(r-l>1){
-                int m = l + (r-l)/2;
-                if(nums[m]<=t) l = m;
-                else r = m;
-            }
-            res[idx++] = l+1;
+            auto it = upper_bound(nums.begin(),nums.end(),t);
+            it--;
+            int i = it - nums.begin();
+            res[idx++] = i+1;
         }
         return res;
     }
