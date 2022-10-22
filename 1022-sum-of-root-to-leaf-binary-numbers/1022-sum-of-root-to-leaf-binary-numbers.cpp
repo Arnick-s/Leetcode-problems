@@ -13,14 +13,11 @@ class Solution {
 public:
     int ans = 0;
     int sumRootToLeaf(TreeNode* root,int sum = 0) {
-        if(!root) return sum;
+        if(!root) return 0;
         
         sum = sum*2 + root->val;
         
-        if(!root->left && !root->right) ans += sum;
-        sumRootToLeaf(root->left,sum);
+        return (root->left == root->right) ? sum : sumRootToLeaf(root->left,sum) +
         sumRootToLeaf(root->right,sum);
-        
-        return ans;
     }
 };
