@@ -11,15 +11,17 @@
  */
 class Solution {
 public:
-    int ans = 0;
     int rangeSumBST(TreeNode* root, int low, int high) {
         if(!root)return 0;
+        int ans = 0;
+        if(root->val >= low && root->val <= high) ans += root->val;
+        int left = rangeSumBST(root->left,low,high);
+        int right = rangeSumBST(root->right,low,high);
         
-        rangeSumBST(root->left,low,high);
-        rangeSumBST(root->right,low,high);
+        ans += right + left;
         
-        if(root->val <= high && root->val >= low)
-            ans += root->val;
+        // cout<<"current root val = "<<root->val<<' '<<left<<' '<<right<<" returning ans = "<<ans<<endl;
+        
         return ans;
     }
 };
