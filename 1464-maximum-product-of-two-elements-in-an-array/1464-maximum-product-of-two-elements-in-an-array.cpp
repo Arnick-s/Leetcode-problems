@@ -3,12 +3,12 @@ public:
     int maxProduct(vector<int>& nums) {
         int max = INT_MIN,secMax = INT_MIN;
         int n = nums.size();
-        for(int i = 0;i<n;i++){
+        for(auto &it:nums){
             //max & secMax
-            if(nums[i] > max){
-                 secMax = exchange(max,nums[i]);
-            }else if(nums[i]<=max && nums[i] > secMax)
-                secMax = nums[i];
+            if(it > max){
+                 secMax = exchange(max,it);
+            }else if(it<=max && it > secMax)
+                secMax = it;
         }
         return (max-1)*(secMax -1);
     }
