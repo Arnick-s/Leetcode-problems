@@ -6,8 +6,7 @@ public:
         for(int i = 0;i<n;i++){
             //max & secMax
             if(nums[i] > max){
-                 secMax = max;
-                max = nums[i];
+                 secMax = exchange(max,nums[i]);
             }else if(nums[i]<=max && nums[i] > secMax)
                 secMax = nums[i];
         }
