@@ -11,28 +11,22 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root,int& H,int h,int& sum){
-        if(root->left == nullptr && root->right == nullptr){
-            
-            if(H<h)
-            {
-                H = h;
-                sum = root->val;
-                
-            }else if( H == h){
-                sum += root->val;
-            }
-            // cout<<H<<' '<<h<<' '<<sum<<' '<<root->val<<endl;
-            return;
-        }
-        
-        if(root->left)solve(root->left,H,h+1,sum);
-        if(root->right)solve(root->right,H,h+1,sum);
-    }
     int deepestLeavesSum(TreeNode* root) {
-        int sum = 0;
-        int H = 0;
-        solve(root,H,0,sum);
-        return sum;
+        queue<TreeNode*> q;
+        q.push(root);
+        int ans = 0;
+        while(!q.empty()){
+            int size = q.size();
+            ans = 0;
+            while(size--){
+                root = q.front();
+                q.pop();
+                ans += root->val;
+                if(root->left) q.push(root->left);
+                if(root->right) q.push(root->right);
+                
+            }
+        }
+        return ans;
     }
 };
