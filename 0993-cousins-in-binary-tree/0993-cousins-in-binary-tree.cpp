@@ -14,34 +14,35 @@ public:
     bool isCousins(TreeNode* root, int x, int y) {
         queue<TreeNode*> q;
         q.push(root);
-        map<int,TreeNode*> parent;
+
         while(!q.empty()){
             int size = q.size();
             bool flagx = false,flagy = false;
-            TreeNode* xp;
-            TreeNode* yp;
+
             while(size--){
                 root = q.front();
                 q.pop();
                 if(root->val == x){
                     flagx = true;
-                    xp = parent[root->val];
                 }
                 if(root->val == y){
                     flagy = true;
-                    yp = parent[root->val];
                 }
-                
+                if(root->left && root->right){
+                    int l = root->left->val;
+                    int r = root->right->val;
+                    
+                    if(max(x,y) == max(l,r) && min(x,y) == min(l,r))
+                        return false;
+                }
                 if(root->left) {
                     q.push(root->left);
-                    parent[root->left->val] = root;
                 }
                 if(root->right){
                     q.push(root->right);
-                    parent[root->right->val] = root;
                 }
             }
-            if(flagx && flagy && xp!=yp) return true;
+            if(flagx && flagy) return true;
         }
         return false;
     }
